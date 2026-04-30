@@ -52,7 +52,12 @@ $hotels = [
     Hotel vote & features
     </h1>
     <?php
-    var_dump($hotels);
+    
+    foreach ($hotels as $hotel) {
+        foreach ($hotel as $key => $value) {
+            echo "$key: $value <br>";
+        }
+    }
 
 
     ?>
