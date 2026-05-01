@@ -84,9 +84,17 @@ if (isset($_GET["vote"]) && $_GET["vote"] !== "") {
     
     foreach ($hotels as $hotel) {
         foreach ($hotel as $key => $value) {
-            echo "<strong>$key</strong> : $value <br>";
+            if ($key === "parking") {
+                $availability = $value ? "parcheggio disponibile" : "no parcheggio";
+                echo "<strong>$key</strong> : $availability <br>";
+            }
+            else {
+                echo "<strong>$key</strong> : $value <br>";
+            }
         }
+        echo "<hr>";
     }
+
  ?>
 <table class="table table-dark table-striped-columns mb-5">
   <thead class= "table-success">
