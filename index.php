@@ -74,8 +74,9 @@ if (isset($_GET["vote"]) && $_GET["vote"] !== "") {
     <title>Esercizio 1: php-hotel</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
-<div class="container mt-5">
+
 <body>
+<div class="container mt-5">
     <h1>
     Hotel vote & features
     </h1>
@@ -137,11 +138,11 @@ if (isset($_GET["vote"]) && $_GET["vote"] !== "") {
                 <label class="text-primary" for="vote"><strong>Select a vote from 1 to 5</strong></label>
                 <select name="vote" id="vote" class="form-select">
                     <option value="">Vote not selected</option>
-                    <option value="1" <?php echo (isset($_GET['vote']) && $_GET['vote'] === 1) ? 'selected' : '' ?>>1</option>
-                    <option value="2" <?php echo (isset($_GET['vote']) && $_GET['vote'] === 2) ? 'selected' : '' ?>>2</option>
-                    <option value="3" <?php echo (isset($_GET['vote']) && $_GET['vote'] === 3) ? 'selected' : '' ?>>3</option>
-                    <option value="4" <?php echo (isset($_GET['vote']) && $_GET['vote'] === 4) ? 'selected' : '' ?>>4</option>
-                    <option value="5" <?php echo (isset($_GET['vote']) && $_GET['vote'] === 5) ? 'selected' : '' ?>>5</option>
+                    <option value="1" <?php echo (isset($_GET['vote']) && $_GET['vote'] == 1) ? 'selected' : '' ?>>1</option>
+                    <option value="2" <?php echo (isset($_GET['vote']) && $_GET['vote'] == 2) ? 'selected' : '' ?>>2</option>
+                    <option value="3" <?php echo (isset($_GET['vote']) && $_GET['vote'] == 3) ? 'selected' : '' ?>>3</option>
+                    <option value="4" <?php echo (isset($_GET['vote']) && $_GET['vote'] == 4) ? 'selected' : '' ?>>4</option>
+                    <option value="5" <?php echo (isset($_GET['vote']) && $_GET['vote'] == 5) ? 'selected' : '' ?>>5</option>
                 </select>
             </div>
             <div class="col-4 d-flex align-items-end">
@@ -199,5 +200,4 @@ if (isset($_GET["vote"]) && $_GET["vote"] !== "") {
 </div>
 </body>
 </html>
-</body>
-</html>
+
