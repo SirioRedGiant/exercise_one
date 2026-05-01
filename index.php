@@ -87,7 +87,7 @@ if (isset($_GET["vote"]) && $_GET["vote"] !== "") {
         }
     }
  ?>
-<table class="table table-dark table-striped-columns">
+<table class="table table-dark table-striped-columns mb-5">
   <thead class= "table-success">
     <tr>
       <?php
@@ -126,7 +126,7 @@ if (isset($_GET["vote"]) && $_GET["vote"] !== "") {
     <form action="index.php" method="GET" >
         <div class="row align">
             <div class="col-4">
-                <label for="parking">With Parking filter</label>
+                <label class="text-primary" for="parking"><strong>With Parking filter</strong></label>
                 <select name="parking" id="parking" class="form-select">
                     <option value="">No selection</option>
                     <option value="1" <?php echo (isset($_GET['parking']) && $_GET['parking'] === '1') ? 'selected' : '' ?>>With parking spots</option>
@@ -134,14 +134,14 @@ if (isset($_GET["vote"]) && $_GET["vote"] !== "") {
             </div>
             
             <div class="col-4">
-                <label class="text-bold" for="vote">Select a vote from 1 to 5</label>
+                <label class="text-primary" for="vote"><strong>Select a vote from 1 to 5</strong></label>
                 <select name="vote" id="vote" class="form-select">
                     <option value="">Vote not selected</option>
-                    <option value="1" <?php echo (isset($_GET['vote']) && $_GET['vote'] >= 1) ? 'selected' : '' ?>>1</option>
-                    <option value="2" <?php echo (isset($_GET['vote']) && $_GET['vote'] >= 2) ? 'selected' : '' ?>>2</option>
-                    <option value="3" <?php echo (isset($_GET['vote']) && $_GET['vote'] >= 3) ? 'selected' : '' ?>>3</option>
-                    <option value="4" <?php echo (isset($_GET['vote']) && $_GET['vote'] >= 4) ? 'selected' : '' ?>>4</option>
-                    <option value="5" <?php echo (isset($_GET['vote']) && $_GET['vote'] >= 5) ? 'selected' : '' ?>>5</option>
+                    <option value="1" <?php echo (isset($_GET['vote']) && $_GET['vote'] === 1) ? 'selected' : '' ?>>1</option>
+                    <option value="2" <?php echo (isset($_GET['vote']) && $_GET['vote'] === 2) ? 'selected' : '' ?>>2</option>
+                    <option value="3" <?php echo (isset($_GET['vote']) && $_GET['vote'] === 3) ? 'selected' : '' ?>>3</option>
+                    <option value="4" <?php echo (isset($_GET['vote']) && $_GET['vote'] === 4) ? 'selected' : '' ?>>4</option>
+                    <option value="5" <?php echo (isset($_GET['vote']) && $_GET['vote'] === 5) ? 'selected' : '' ?>>5</option>
                 </select>
             </div>
             <div class="col-4 d-flex align-items-end">
@@ -151,7 +151,7 @@ if (isset($_GET["vote"]) && $_GET["vote"] !== "") {
         </div>
     </form>
 
-    <table class="table table-dark table-striped-columns">
+    <table class="table table-dark table-striped-columns mt-2">
         <thead class="table-success">
             <tr>
             <?php
@@ -171,14 +171,26 @@ if (isset($_GET["vote"]) && $_GET["vote"] !== "") {
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($filtered_hotels as $hotel) { ?>
+            
+            <?php
+            // se c'è almeno un filtro stampo ⬇️ altrimenti nessuna corr. trovata
+            if (count($filtered_hotels) > 0) {
+                foreach ($filtered_hotels as $hotel) { ?>
                 <tr>
-                    <td><?php echo $hotel['name']; ?></td>
+                    <th><?php echo $hotel['name']; ?></th>
                     <td><?php echo $hotel['description']; ?></td>
                     <td><?php echo $hotel['parking'] ? 'yes' : 'no'; ?></td>
                     <td><?php echo $hotel['vote']; ?></td>
                     <td><?php echo $hotel['distance_to_center']; ?> km</td>
                 </tr>
+            <?php
+                }
+
+            } else {
+            ?>
+            <tr>
+                <td colspan="5" class="text-center bg-warning text-black"><strong>No matches found. Try with other filters</strong></td>
+            </tr>
             <?php
             }
             ?>
